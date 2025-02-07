@@ -1,4 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { withSilencedDeprecations } from "discourse/lib/deprecated";
 import discourseComputed from "discourse-common/utils/decorators";
 import TopicListItem from "discourse/components/topic-list-item";
 import LatestTopicListItem from "discourse/components/latest-topic-list-item";
