@@ -54,7 +54,7 @@ export default {
             value.push("solvable");
           }
           if (context.topic.get("has_accepted_answer")) {
-            value.push("solvable");
+            value.push("status-solved");
           }
           return value;
         }
