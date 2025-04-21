@@ -1,42 +1,10 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
-import { withSilencedDeprecations } from "discourse/lib/deprecated";
-import discourseComputed from "discourse-common/utils/decorators";
-import TopicListItem from "discourse/components/topic-list-item";
-import LatestTopicListItem from "discourse/components/latest-topic-list-item";
 
 export default {
   name: "solved-badge",
 
   initialize(container) {
     withPluginApi("1.39.0", api => {
-      // Should remove after the glimmer topic list transition
-      withSilencedDeprecations("discourse.hbr-topic-list-overrides", () => {
-        TopicListItem.reopen({
-          @discourseComputed()
-          unboundClassNames() {
-            let classList = this._super(...arguments);
-            if (this.topic.can_have_answer) {
-              classList += " solvable";
-            }
-            return classList;
-          },
-        });
-
-        LatestTopicListItem.reopen({
-          @discourseComputed()
-          unboundClassNames() {
-            let classList = this._super(...arguments);
-            if (this.topic.can_have_answer) {
-              classList += " solvable";
-            }
-            if (this.topic.has_accepted_answer) {
-              classList += " status-solved";
-            }
-            return classList;
-          },
-        });
-      });
-
       api.registerValueTransformer(
         "topic-list-item-class",
         ({ value, context }) => {
