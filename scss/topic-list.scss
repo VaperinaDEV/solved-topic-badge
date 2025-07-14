@@ -31,6 +31,9 @@
     // Solved Topic Style
     @if $enable-solved-topic-background == "true" {
       background: #{$solved_topic_background};
+      &.visited {
+        background: #{$solved_topic_background};
+      }
       &.highlighted {
         animation: solved-background-fade-topiclight 2s ease-out;
       }
@@ -39,7 +42,7 @@
   
   // Unsolved
   &.solvable {
-    &:not(.status-solved) { 
+    &:not(.status-solved) {
       // Unsolved Indicator
       .title {
         @if $type == "inline" {
@@ -68,6 +71,9 @@
       // Unsolved Topic Style
       @if $enable-unsolved-topic-background == "true" {
         background: #{$unsolved_topic_background};
+        &.visited {
+          background: #{$unsolved_topic_background};
+        }
         &.highlighted {
           animation: unsolved-background-fade-topiclight 2s ease-out;
         }
